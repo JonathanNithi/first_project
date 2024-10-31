@@ -9,11 +9,11 @@ func main() {
 	var remainingTickets = 50
 
 	//welcome message
-	fmt.Println("Welcome to the", conferenceName, "booking application")
+	fmt.Printf("Welcome to the %v booking application\n", conferenceName)
 	fmt.Println("=================================================")
 	fmt.Println()
-	fmt.Println("We have a total of", conferenceTickets, "tickets")
-	fmt.Println("The amount of remaining tickets are", remainingTickets)
+	fmt.Printf("We have a total of %v tickets\n", conferenceTickets)
+	fmt.Printf("The amount of remaining tickets are %v\n", remainingTickets)
 	fmt.Println()
 	fmt.Println("Get the tickets to your favorite conference")
 }
