@@ -31,4 +31,9 @@ func main() {
 
 	fmt.Println()
 	fmt.Printf("User %v %v has purchased %v tickets.\n", firstName, lastName, ticketCount)
+
+	remainingTickets = remainingTickets - ticketCount
+
+	fmt.Printf("There are %v tickets left for %v\n", remainingTickets, conferenceName)
+	fmt.Println("Hurry up and get your tickets before they get sold out!")
 }
