@@ -4,9 +4,9 @@ import "fmt"
 
 func main() {
 	//initialise variables and constants
-	var conferenceName = "Go Conference"
-	const conferenceTickets = 50
-	var remainingTickets = 50
+	conferenceName := "Go Conference"
+	const conferenceTickets uint = 50
+	var remainingTickets uint = 50
 
 	//welcome message
 	fmt.Printf("Welcome to the %v booking application\n", conferenceName)
