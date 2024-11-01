@@ -7,6 +7,7 @@ func main() {
 	conferenceName := "Go Conference"
 	const conferenceTickets uint = 50
 	var remainingTickets uint = 50
+	var bookingsList = [50]string{}
 
 	//welcome message
 	fmt.Printf("Welcome to the %v booking application\n", conferenceName)
@@ -31,9 +32,11 @@ func main() {
 
 	fmt.Println()
 	fmt.Printf("User %v %v has purchased %v tickets.\n", firstName, lastName, ticketCount)
+	bookingsList[0] = firstName + " " + lastName
 
 	remainingTickets = remainingTickets - ticketCount
 
 	fmt.Printf("There are %v tickets left for %v\n", remainingTickets, conferenceName)
 	fmt.Println("Hurry up and get your tickets before they get sold out!")
+	fmt.Printf("This is the list of bookings: %v", bookingsList)
 }
