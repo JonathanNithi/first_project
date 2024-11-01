@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
 	//initialise variables and constants
@@ -23,20 +26,30 @@ func main() {
 	var lastName string
 	var ticketCount uint
 
-	fmt.Println("Please enter your first name:")
-	fmt.Scan(&firstName)
-	fmt.Println("Please enter your last name:")
-	fmt.Scan(&lastName)
-	fmt.Println("Please enter the count of tickets you wish to purchase:")
-	fmt.Scan(&ticketCount)
+	for {
+		fmt.Println("Please enter your first name:")
+		fmt.Scan(&firstName)
+		fmt.Println("Please enter your last name:")
+		fmt.Scan(&lastName)
+		fmt.Println("Please enter the count of tickets you wish to purchase:")
+		fmt.Scan(&ticketCount)
 
-	fmt.Println()
-	fmt.Printf("User %v %v has purchased %v tickets.\n", firstName, lastName, ticketCount)
-	bookingsList = append(bookingsList, firstName+" "+lastName)
+		fmt.Println()
+		fmt.Printf("User %v %v has purchased %v tickets.\n", firstName, lastName, ticketCount)
+		bookingsList = append(bookingsList, firstName+" "+lastName)
 
-	remainingTickets = remainingTickets - ticketCount
+		remainingTickets = remainingTickets - ticketCount
 
-	fmt.Printf("There are %v tickets left for %v\n", remainingTickets, conferenceName)
-	fmt.Println("Hurry up and get your tickets before they get sold out!")
-	fmt.Printf("This is the list of bookings: %v", bookingsList)
+		fmt.Printf("There are %v tickets left for %v\n", remainingTickets, conferenceName)
+		fmt.Println("Hurry up and get your tickets before they get sold out!")
+
+		firstNameList := []string{}
+		//for loop with an unused variable instead of index
+		for _, booking := range bookingsList {
+			var names = strings.Fields(booking)
+			firstNameList = append(firstNameList, names[0])
+		}
+		fmt.Printf("This is the list of bookings: %v \n", firstNameList)
+	}
+
 }
