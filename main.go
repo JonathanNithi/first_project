@@ -34,31 +34,30 @@ func main() {
 		fmt.Println("Please enter the count of tickets you wish to purchase:")
 		fmt.Scan(&ticketCount)
 
-		if ticketCount > remainingTickets {
+		if ticketCount <= remainingTickets {
+			fmt.Println()
+			fmt.Printf("User %v %v has purchased %v tickets.\n", firstName, lastName, ticketCount)
+			bookingsList = append(bookingsList, firstName+" "+lastName)
+
+			remainingTickets = remainingTickets - ticketCount
+
+			fmt.Printf("There are %v tickets left for %v\n", remainingTickets, conferenceName)
+			fmt.Println("Hurry up and get your tickets before they get sold out!")
+
+			firstNameList := []string{}
+			//for loop with an unused variable instead of index
+			for _, booking := range bookingsList {
+				var names = strings.Fields(booking)
+				firstNameList = append(firstNameList, names[0])
+			}
+			fmt.Printf("This is the list of bookings: %v \n", firstNameList)
+
+			if remainingTickets == 0 {
+				fmt.Printf("%v tickets are now sold out!\n", conferenceName)
+				break
+			}
+		} else {
 			fmt.Printf("The remaining ticket count is %v and therefore, you cannot purchase %v tickets\n", remainingTickets, ticketCount)
-			continue
-		}
-
-		fmt.Println()
-		fmt.Printf("User %v %v has purchased %v tickets.\n", firstName, lastName, ticketCount)
-		bookingsList = append(bookingsList, firstName+" "+lastName)
-
-		remainingTickets = remainingTickets - ticketCount
-
-		fmt.Printf("There are %v tickets left for %v\n", remainingTickets, conferenceName)
-		fmt.Println("Hurry up and get your tickets before they get sold out!")
-
-		firstNameList := []string{}
-		//for loop with an unused variable instead of index
-		for _, booking := range bookingsList {
-			var names = strings.Fields(booking)
-			firstNameList = append(firstNameList, names[0])
-		}
-		fmt.Printf("This is the list of bookings: %v \n", firstNameList)
-
-		if remainingTickets == 0 {
-			fmt.Printf("%v tickets are now sold out!\n", conferenceName)
 		}
 	}
-
 }
