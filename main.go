@@ -71,13 +71,6 @@ func printFirstNames(bookingsList []string) {
 	fmt.Printf("This is the list of bookings: %v \n", firstNameList)
 }
 
-func validateUserInput(firstName string, lastName string, ticketCount uint) (bool, bool) {
-	var isValidName bool = len(firstName) >= 2 && len(lastName) >= 2
-	var isValidTicket bool = ticketCount > 0 && ticketCount <= remainingTickets
-
-	return isValidName, isValidTicket
-}
-
 func getUserInput() (string, string, uint) {
 
 	var firstName string
