@@ -34,7 +34,10 @@ func main() {
 		fmt.Println("Please enter the count of tickets you wish to purchase:")
 		fmt.Scan(&ticketCount)
 
-		if ticketCount <= remainingTickets {
+		var isValidName bool = len(firstName) >= 2 && len(lastName) >= 2
+		var isValidTicket bool = ticketCount > 0 && ticketCount <= remainingTickets
+
+		if isValidName && isValidTicket {
 			fmt.Println()
 			fmt.Printf("User %v %v has purchased %v tickets.\n", firstName, lastName, ticketCount)
 			bookingsList = append(bookingsList, firstName+" "+lastName)
@@ -57,7 +60,16 @@ func main() {
 				break
 			}
 		} else {
-			fmt.Printf("The remaining ticket count is %v and therefore, you cannot purchase %v tickets\n", remainingTickets, ticketCount)
+			if !isValidName {
+				fmt.Println("Please enter a name which is longer than 2 letters")
+			}
+			if !isValidTicket {
+				if ticketCount <= 0 {
+					fmt.Println("You cannot enter a zero or a negative number for the required number of tickets")
+				} else {
+					fmt.Printf("The remaining ticket count is %v and therefore, you cannot purchase %v tickets\n", remainingTickets, ticketCount)
+				}
+			}
 		}
 	}
 }
